@@ -16,6 +16,18 @@
 <body>
     <x-adminheader></x-adminheader>
     <div class="container">
+        <div class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Dropdown link
+            </a>
+
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/admin?status=1">Новая</a></li>
+                <li><a class="dropdown-item" href="/admin?status=2">Подтверждено</a></li>
+                <li><a class="dropdown-item" href="/admin?status=3">Отклонено</a></li>
+            </ul>
+        </div>
         <div class="row row-cols-1 row-cols-md-3 g-4">
             @foreach ($products as $product)
                 <div class="col">

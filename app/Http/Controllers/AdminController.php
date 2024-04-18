@@ -10,7 +10,11 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $products = Product::paginate(3);
+        if (isset($_GET['status'])) {
+            $products = Product::where('id_status', $_GET['status'])->paginate(3);
+        } else {
+            $products = Product::paginate(3);
+        }
         return view('admin.index', ['products' => $products]);
     }
 
@@ -41,6 +45,7 @@ class AdminController extends Controller
         $product = Product::create([
             'title' => $request->title,
             'description' => $request->description,
+            'id_status' => 1,
             'photo' => $hashPhoto,
             'cost' => $request->cost,
         ]);
